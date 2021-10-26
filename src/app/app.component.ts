@@ -58,12 +58,26 @@ export class AppComponent implements OnInit {
       this.getPokerHandRank(p)
     );
     const sortedRanks = pokerHandsWithRank.sort((a, b) => {
-      if (a.rank < b.rank) return 1;
-      if (a.rank > b.rank) return -1;
+      if (a.rank < b.rank) {
+        return 1;
+      }
+
+      if (a.rank > b.rank) {
+        return -1;
+      }
+
+      if (a.value < b.value) {
+        return 1;
+      }
+
+      if (a.value > b.value) {
+        return -1;
+      }
+
       return 0;
     });
 
-    this.strongest = sortedRanks[0]?.value ?? 'Not found';
+    this.strongest = sortedRanks[0]?.pokerHand.join(', ') ?? 'Not found';
   }
 
   private generatePokerHands(): string[][] {
@@ -114,6 +128,7 @@ export class AppComponent implements OnInit {
 
     return {
       rank,
+      pokerHand: cards,
       value: faces
         .sort((a, b) => {
           const countDiff = counts[b] - counts[a];
