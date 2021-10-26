@@ -1,16 +1,24 @@
-<h2>Find Strongest Poker Hand</h2>
-<button (click)="getYourCards()">Get Your Cards</button>
-<p>Your cards are: {{ cardsOnHand.join(", ") }}</p>
+<div class="container">
+  <h2>Find Strongest Poker Hand</h2>
+  <pre>
+    Suits: H = Heart, C = Club, S = Spade, D = Diamond
+    Faces: 2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K, A
+    Example Poker Hand: 2C 4Q AS KC 8D
+  </pre>
+  <hr />
+  <button (click)="getYourCards()">Get Your Cards</button>
+  <p>Your cards are: {{ cardsOnHand.join(", ") }}</p>
 
-<button (click)="getFiveCards()" [disabled]="!cardsOnHand.length">
-  Get 5 Cards
-</button>
-<p>5 cards are: {{ fiveCards.join(", ") }}</p>
-
-<button
-  (click)="findStrongestPokerHand()"
-  [disabled]="!cardsOnHand.length || !fiveCards.length"
->
-  Find Strongest Poker Hand
-</button>
-<p>Your strongest poker hand: {{ strongest }}</p>
+  <button (click)="getFiveCards()" [disabled]="!cardsOnHand.length">
+    Get 5 Cards
+  </button>
+  <p>5 cards are: {{ fiveCards.join(", ") }}</p>
+  <!-- TODO Add more condition to make sure that only call findStrongestPokerHand function when redrawing cards and 5 cards -->
+  <button
+    (click)="findStrongestPokerHand()"
+    [disabled]="!cardsOnHand.length || !fiveCards.length"
+  >
+    Find Strongest Poker Hand
+  </button>
+  <p>Your strongest poker hand: {{ strongest }}</p>
+</div>
